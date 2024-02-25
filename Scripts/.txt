@@ -1,0 +1,6 @@
+Funkcija GeneriranjeIzvjestaja():
+    Za svaki mjesec u godini:
+        Izračunaj popunjenost kapaciteta garaže
+        Izračunaj uspješnost „kišne“ akcije
+        Izračunaj isplativost poslovanja garaže
+        Generiraj izvještaj za taj mjesec

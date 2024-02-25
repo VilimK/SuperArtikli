@@ -1,0 +1,123 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>SuperArtikli</title>
+    <link rel="stylesheet" type="text/css" href="../../Content/home.css">
+    <link rel="stylesheet" type="text/css" href="../../Content/modal.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tableexport@5.2.0/dist/js/tableexport.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.0/xlsx.full.min.js"></script>
+    <script src="../../Scripts/homeUtils.js"></script>
+    <script src="../../Scripts/ajaxRequests.js"></script>
+</head>
+<body>
+    <div id="addArticleModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Dodavanje novog artikla</h2>
+            <p>
+                Unesite parametre artikla.
+            </p>
+            <form id="addItemForm">
+                <label for="addArticleName">Ime: </label>
+                <input type="text" id="addArticleName">
+
+                <br>
+
+                <label for="addArticleCategoryBox">Kategorija: </label>
+                <input type="text" id="addArticleCategoryBox">
+
+                <br>
+
+                <label for="addArticlePrice">Cijena: </label>
+                <input type="text" id="addArticlePrice">
+
+                <br>
+
+                <button type="button" id="btnFinalAddArticle" >Dodaj</button>
+                <button type="button" id="btnCancelChange">Odustani</button>
+            </form>
+        </div>
+    </div>
+    <div id="changeArticleModal" class="modal">
+        <div class="modal-content">
+            <span class="close2">&times;</span>
+            <h3 id="changeHeader"></h3>
+            <p>
+                Unesite nove parametre artikla.<br />
+                Ako neki parametar ne želite mijenjati, ostavite ga praznim. <br />
+            </p>
+            <form id="changeItemForm">
+                    <label for="changeArticleName">Novo ime: </label>
+                    <input type="text" id="changeArticleName">
+
+                    <br>
+
+                    <label for="changeArticleCategoryBox">Nova kategorija: </label>
+                    <input type="text" id="changeArticleCategoryBox">
+
+                    <br>
+
+                    <label for="changeArticlePrice">Nova cijena: </label>
+                    <input type="text" id="changeArticlePrice">
+
+                    <br>
+
+                    <button type="button" id="btnFinalChangeArticle" >Izmjeni</button>
+                    <button type="button" id="btnCancelAdding" >Odustani</button>
+                </form>
+        </div>
+    </div>
+
+    <script>
+        var articlesGlobal;
+        $(document).ready(function () {
+            var articles = {{ArticlesData}};
+            articlesGlobal = articles;
+            AddButton("excelExport", "Preuzmite tablicu u excelu", "btnExcelExport", ExportExcel, document.body,"exportBtn");
+            AddButton("addNewArticle", "Dodaj novi artikl", "btnAddNewArticle", DisplayAddArticleModal, document.body,"addBtn");
+            CreateArticlesTable(articles);
+
+            var addModal = document.getElementById('addArticleModal');
+            var changeModal = document.getElementById('changeArticleModal');
+            var span = document.getElementById("btnCancelAdding");
+
+            var btnCancelAdd = document.getElementById("btnCancelAdding");
+            var btnFinalAdd = document.getElementById("btnFinalAddArticle");
+
+            var btnCancelChange = document.getElementById("btnCancelChange");
+            var btnFinalChangeArticle = document.getElementById("btnFinalChangeArticle");
+
+            btnCancelAdd.addEventListener("click", CloseModal);
+            btnFinalAdd.addEventListener("click", SendArticlesParametersInDatabase);
+            btnCancelChange.addEventListener("click", CloseModal);
+            btnFinalChangeArticle.addEventListener("click", SendChangedArticlesParametersInDatabase,);
+
+            span.onclick = function () {
+                alert("");
+                addModal.style.display = 'none';
+                changeModal.style.display = 'none';
+            }
+
+            window.onclick = function (event) {
+                if (event.target == changeModal) changeModal.style.display = 'none';
+                if (event.target == addModal) addModal.style.display = 'none';
+            }
+
+            var closeButton1 = document.querySelector('.close');
+            var closeButton2 = document.querySelector('.close2');
+
+            closeButton1.onclick = function () {
+                addModal.style.display = 'none';
+                changeModal.style.display = 'none';
+            }
+
+            closeButton2.onclick = function () {
+                addModal.style.display = 'none';
+                changeModal.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+﻿
+body {
+    background-color: #F57258;
+}
+
+table {
+    border-collapse: collapse;
+    width: 80%;
+    margin: 80px auto; 
+    border-collapse: collapse;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+}
+
+th,td {
+    padding: 12px 15px;
+}
+
+table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+table tbody tr:nth-of-type(odd) {
+    background-color: #C5C7DF;
+}
+
+.headRow{
+    font-weight: bold;
+    color: brown;
+}
+
+.changeBtn,
+.deleteBtn,
+.exportBtn,
+.addBtn {
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.deleteBtn {
+    font-weight: bold;
+    background-color: red;
+    color: white;
+}
+
+.changeBtn {
+    font-weight: bold;
+    background-color: #ffa500;
+    color: white;
+}
+
+.exportBtn,
+.addBtn {
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.exportBtn {
+    background-color: green;
+    color: white;
+}
+
+.addBtn {
+    background-color: blue;
+    color: white;
+}
+
